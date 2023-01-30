@@ -6,8 +6,14 @@ function merge-dev() {
     return 1
   fi
 
+  ORIGIN_BRANCH=$1
   CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
   PROHIBITED_BRANCHES=("development" "staging" "production")
+
+
+  if [ -z "$ORIGIN_BRANCH" ]; then
+    ORIGIN_BRANCH="development"
+  fi
 
   # Check if current branch be different from $PROHIBITED_BRANCHES
   if [[ " ${PROHIBITED_BRANCHES[@]} " =~ " ${CURRENT_BRANCH} " ]]; then
@@ -21,13 +27,13 @@ function merge-dev() {
     return 1
   fi
 
-  echo "Merging development into $CURRENT_BRANCH..."
+  echo "Merging ${ORIGIN_BRANCH} into $CURRENT_BRANCH..."
 
-  git checkout development
-  git pull origin development
+  git checkout $ORIGIN_BRANCH
+  git pull origin $ORIGIN_BRANCH
 
   git checkout $CURRENT_BRANCH
-  git merge development --no-ff
+  git merge $ORIGIN_BRANCH --no-ff
 
   echo "Done."
 }
