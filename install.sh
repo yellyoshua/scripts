@@ -1,10 +1,10 @@
 #!/bin/bash
 set -e
 
-if [ "$EUID" -ne 0 ]; then
-	echo "Please run as root"
-	exit
-fi
+# if [ "$EUID" -ne 0 ]; then
+# 	echo "Please run as root"
+#   exit
+# fi
 
 export GLOBAL_BASHRC_FILE="$HOME/.bashrc"
 export GLOBAL_BASH_RC_BACKUP="$HOME/.bashrc.backup"
@@ -15,8 +15,7 @@ export GLOBAL_BASH_RC_GENERATED_FILE="$HOME/.bashrc_profile_generated"
 cat $GLOBAL_BASHRC_FILE > $GLOBAL_BASH_RC_BACKUP
 
 if grep -q "source $GLOBAL_BASH_RC_GENERATED_FILE" $GLOBAL_BASHRC_FILE; then
-	# Remove the line from the .bashrc file "source $GLOBAL_BASH_RC_GENERATED_FILE"
-  sed -i "/source $GLOBAL_BASH_RC_GENERATED_FILE/d" $GLOBAL_BASHRC_FILE
+  sed -i -e "/.bashrc_profile_generated/d" $GLOBAL_BASHRC_FILE
 fi
 
 # Create the .bashrc_profile_generated file
@@ -31,7 +30,7 @@ sh config/bootstrap.sh
 echo "Configure settings... [DONE]"
 
 echo "Installing custom packages..."
-sh packages/bootstrap.sh
+sudo sh packages/bootstrap.sh
 echo "Installing custom packages... [DONE]"
 
 echo "Creating custom aliases, variables and functions..."
