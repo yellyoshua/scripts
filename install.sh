@@ -6,6 +6,14 @@ set -e
 #   exit
 # fi
 
+if [ "$(uname -s)" = "Linux" ]; then
+  export OPERATING_SYSTEM="linux"
+fi
+
+if [ "$(uname -s)" = "Darwin" ]; then
+  export OPERATING_SYSTEM="macos"
+fi
+
 export GLOBAL_BASHRC_FILE="$HOME/.bashrc"
 export GLOBAL_BASH_RC_BACKUP="$HOME/.bashrc.backup"
 export GLOBAL_CUSTOM_BINS_DIR="$HOME/.bin"
@@ -18,23 +26,28 @@ if grep -q "source $GLOBAL_BASH_RC_GENERATED_FILE" $GLOBAL_BASHRC_FILE; then
   sed -i -e "/.bashrc_profile_generated/d" $GLOBAL_BASHRC_FILE
 fi
 
+# check if $GLOBAL_BASH_RC_GENERATED_FILE exists
+if [ -f $GLOBAL_BASH_RC_GENERATED_FILE ]; then
+	rm $GLOBAL_BASH_RC_GENERATED_FILE
+fi
+
 # Create the .bashrc_profile_generated file
 touch $GLOBAL_BASH_RC_GENERATED_FILE
 
 echo "Adding custom binaries to PATH..."
-sh bin/bootstrap.sh
+sh bin/$OPERATING_SYSTEM/bootstrap.sh
 echo "Adding custom binaries to PATH... [DONE]"
 
 echo "Configure settings..."
-sh config/bootstrap.sh
+sh config/$OPERATING_SYSTEM/bootstrap.sh
 echo "Configure settings... [DONE]"
 
 echo "Installing custom packages..."
-sudo sh packages/bootstrap.sh
+sudo sh packages/$OPERATING_SYSTEM/bootstrap.sh
 echo "Installing custom packages... [DONE]"
 
 echo "Creating custom aliases, variables and functions..."
-sh core/bootstrap.sh
+sh core/$OPERATING_SYSTEM/bootstrap.sh
 echo "Creating custom aliases, variables and functions... [DONE]"
 
 # Restore the backup of the existing .bashrc file

@@ -1,11 +1,6 @@
 #!/bin/bash
 set -e
 
-# check if $GLOBAL_GLOBAL_BASH_RC_GENERATED_FILE exists
-if [ -f $GLOBAL_GLOBAL_BASH_RC_GENERATED_FILE ]; then
-		rm $GLOBAL_GLOBAL_BASH_RC_GENERATED_FILE
-fi
-
 echo "\n# Aliases #" >> $GLOBAL_BASH_RC_GENERATED_FILE
 cat core/aliases.sh >> $GLOBAL_BASH_RC_GENERATED_FILE
 echo "\n# Aliases #\n\n" >> $GLOBAL_BASH_RC_GENERATED_FILE
