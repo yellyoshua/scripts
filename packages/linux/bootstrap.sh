@@ -13,3 +13,7 @@ echo "Installing package nodejs... [DONE]"
 echo "Installing package bunjs..."
 sh packages/bunjs.sh
 echo "Installing package bunjs... [DONE]"
+
+echo "Installing package wkhtmltopdf v0.12.3..."
+sh packages/wkhtmltopdf_v0.12.3.sh
+echo "Installing package wkhtmltopdf v0.12.3... [DONE]"

@@ -9,4 +9,9 @@ apt install -y \
 		wget \
 		vim \
 		git \
-		unzip
+		unzip \
+    postfix \
+    graphicsmagick \
+    imagemagick \
+    ffmpeg \
+    xsltproc
