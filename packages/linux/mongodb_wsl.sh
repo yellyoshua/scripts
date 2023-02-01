@@ -29,11 +29,14 @@ apt install -y mongodb-org
 
 # Create mongodb data directory
 sudo mkdir -p ${MONGODB_DATA_PATH}
-chown mongodb:mongodb ${MONGODB_DATA_PATH}
+sudo chown mongodb:mongodb ${MONGODB_DATA_PATH}
+
+# Prevent "Attempted to create a lock file on a read-only directory: /data/db"
+sudo chmod 777 ${MONGODB_DATA_PATH}
 
 # Create mongodb log directory
 sudo mkdir -p /var/log/mongodb
-chown mongodb:mongodb /var/log/mongodb
+sudo chown mongodb:mongodb /var/log/mongodb
 
 # Create mongodb configuration file
 cat << EOF > /etc/mongodb.conf
