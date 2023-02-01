@@ -19,14 +19,14 @@ sh packages/linux/wkhtmltopdf_v0.12.3.sh
 echo "Installing package wkhtmltopdf v0.12.3... [DONE]"
 
 # If WSL environment is detected, install the following packages
-if [$WSL -eq 1]; then
+if [[ $WSL == 1 ]]; then
   echo "Installing package mongodb wsl..."
   sh packages/linux/mongodb_wsl.sh
   echo "Installing package mongodb wsl... [DONE]"
 fi
 
 # If WSL environment is not detected, install the following packages
-if [$WSL -eq 0]; then
+if [[ $WSL == 0 ]]; then
   echo "Installing package mongodb..."
   sh packages/linux/mongodb.sh
   echo "Installing package mongodb... [DONE]"
