@@ -28,11 +28,11 @@ apt update
 apt install -y mongodb-org
 
 # Create mongodb data directory
-mkdir -p ${MONGODB_DATA_PATH}
+sudo mkdir -p ${MONGODB_DATA_PATH}
 chown mongodb:mongodb ${MONGODB_DATA_PATH}
 
 # Create mongodb log directory
-mkdir -p /var/log/mongodb
+sudo mkdir -p /var/log/mongodb
 chown mongodb:mongodb /var/log/mongodb
 
 # Create mongodb configuration file
