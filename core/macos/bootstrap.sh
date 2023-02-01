@@ -16,5 +16,4 @@ echo "\n# Functions #\n\n" >> $GLOBAL_BASH_RC_GENERATED_FILE
 
 echo "\n# Variables #" >> $GLOBAL_BASH_RC_GENERATED_FILE
 cat core/variables.sh >> $GLOBAL_BASH_RC_GENERATED_FILE
-echo "PATH=\"$GLOBAL_CUSTOM_BINS_DIR:$PATH\"" >> $GLOBAL_BASH_RC_GENERATED_FILE
 echo "\n# Variables #\n\n" >> $GLOBAL_BASH_RC_GENERATED_FILE

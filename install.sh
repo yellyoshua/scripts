@@ -50,6 +50,9 @@ echo "Creating custom aliases, variables and functions..."
 sh core/$OPERATING_SYSTEM/bootstrap.sh
 echo "Creating custom aliases, variables and functions... [DONE]"
 
+# Attach GLOBAL_BASH_RC_GENERATED_FILE to PATH variable
+echo "export PATH=$GLOBAL_CUSTOM_BINS_DIR:\$PATH" >> $GLOBAL_BASH_RC_GENERATED_FILE
+
 # Restore the backup of the existing .bashrc file
 cat $GLOBAL_BASH_RC_BACKUP > $GLOBAL_BASHRC_FILE
 

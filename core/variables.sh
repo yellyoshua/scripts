@@ -1,7 +1,9 @@
 
 ## Bun ##
 BUN_INSTALL="$HOME/.bun"
-PATH="$BUN_INSTALL/bin:$PATH"
+
+# Create a symlink to the bun executable
+ln -s $BUN_INSTALL/bin/bun /usr/bin/bun
 
 ## Node Version Manager ##
 export NVM_DIR="$HOME/.nvm"
