@@ -35,19 +35,19 @@ fi
 touch $GLOBAL_BASH_RC_GENERATED_FILE
 
 echo "Adding custom binaries to PATH..."
-sh bin/$OPERATING_SYSTEM/bootstrap.sh
+./bin/$OPERATING_SYSTEM/bootstrap.sh
 echo "Adding custom binaries to PATH... [DONE]"
 
 echo "Configure settings..."
-sh config/$OPERATING_SYSTEM/bootstrap.sh
+./config/$OPERATING_SYSTEM/bootstrap.sh
 echo "Configure settings... [DONE]"
 
 echo "Installing custom packages..."
-sudo sh packages/$OPERATING_SYSTEM/bootstrap.sh
+sudo ./packages/$OPERATING_SYSTEM/bootstrap.sh
 echo "Installing custom packages... [DONE]"
 
 echo "Creating custom aliases, variables and functions..."
-sh core/$OPERATING_SYSTEM/bootstrap.sh
+./core/$OPERATING_SYSTEM/bootstrap.sh
 echo "Creating custom aliases, variables and functions... [DONE]"
 
 # Attach GLOBAL_BASH_RC_GENERATED_FILE to PATH variable
