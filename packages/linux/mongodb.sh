@@ -1,9 +1,9 @@
 #!/bin/bash
 
-MONGODB_VERSION = "4.4.1"
-MONGODB_PATH = "/opt/mongodb"
-MONGODB_BIN_PATH = "/opt/mongodb/bin"
-MONGODB_DATA_PATH = "/data/db"
+MONGODB_VERSION="${MONGODB_VERSION}" || "4.4.1"
+MONGODB_PATH="/opt/mongodb"
+MONGODB_BIN_PATH="/opt/mongodb/bin"
+MONGODB_DATA_PATH="/data/db"
 
 # Install mongodb for linux
 wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu2004-${MONGODB_VERSION}.tgz -O /tmp/mongodb-linux-x86_64-ubuntu2004-${MONGODB_VERSION}.tgz
