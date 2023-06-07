@@ -6,6 +6,10 @@ wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1f-1ubun
 sudo apt install -y /tmp/libssl1.1_1.1.1f-1ubuntu2_amd64.deb
 rm /tmp/libssl1.1_1.1.1f-1ubuntu2_amd64.deb
 
+# Postfix config
+debconf-set-selections <<< "postfix postfix/mailname string localmail.com"
+debconf-set-selections <<< "postfix postfix/main_mailer_type string 'Internet Site'"
+
 # Install libraries
 apt install -y \
 		apt-transport-https \
